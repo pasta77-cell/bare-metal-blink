@@ -1,0 +1,13 @@
+here I mention an example of use of the datasheets :
+to make a blinking led using reisters u need to access first the Clocl register using its adreess which u find it in the manual 
+of stm32  but u can use something that looks like this line for example :
+#define RclockRegistre ((*unit 32*)0x40023383) ....note:the line is not accurate but it is like defining the adress of the clock that
+i gave a name.
+u do the same to the GPIOA_MODER 
+than to the GPIOA_BSRR
+note GPIOA_BSRR is a register that control atomicly the GPIOA_ODR so it kinds of set it to low or high ..
+thats was the tough part 
+than the easy part is manipulating the bits according to the data sheets 
+for example to enable the clock :
+RclockRegistre |=(1U<<0) ...so using this line is a way to set bit 0 to 1 ...because this instruction (1<<0)= 0000 0001 and 
+u made it or with the clock registre so it will set the first bit to 1 .
